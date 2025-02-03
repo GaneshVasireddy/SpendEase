@@ -1,19 +1,76 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/main"
+<androidx.drawerlayout.widget.DrawerLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".MainActivity"
+    android:id="@+id/drawer_layout"
+    >
 
-    <TextView
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/main"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/grey"
+        >
+
+        <include android:id="@+id/custom_toolbar" layout="@layout/custom_toolbar" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Expenses"
+            android:id="@+id/expenses_title"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:textColor="@color/black"
+            android:fontFamily="@font/lexend_deca_regular"
+            app:layout_constraintStart_toStartOf="@id/main"
+            app:layout_constraintTop_toBottomOf="@id/custom_toolbar"
+            android:layout_marginLeft="24dp"
+            android:layout_marginTop="24dp"
+            />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Add Expense"
+            android:textColor="@color/white"
+            android:fontFamily="@font/lexend_deca_regular"
+            android:backgroundTint="@color/blue"
+            app:layout_constraintTop_toTopOf="@id/expenses_title"
+            app:layout_constraintBottom_toBottomOf="@id/expenses_title"
+            app:layout_constraintEnd_toEndOf="@id/main"
+            android:layout_marginEnd="24dp"
+            android:minHeight="0dp"
+            android:minWidth="0dp"
+            android:paddingVertical="6dp"
+            android:paddingHorizontal="8dp"
+            android:id="@+id/add_expense_btn"
+            />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginTop="32dp"
+            app:layout_constraintStart_toStartOf="@id/expenses_title"
+            app:layout_constraintTop_toBottomOf="@id/expenses_title"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@id/add_expense_btn"
+            android:id="@+id/expense_list"
+            />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <com.google.android.material.navigation.NavigationView
+        android:id="@+id/nav_view"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Hello World!"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:layout_height="match_parent"
+        android:layout_gravity="left"
+        app:itemTextAppearance="@style/NavMenuTextItems"
+        android:backgroundTint="@color/white"
+        app:itemTextColor="@color/black"
+        app:menu="@menu/nav_menu" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.drawerlayout.widget.DrawerLayout>

@@ -1,0 +1,141 @@
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_marginLeft="32dp"
+    android:layout_marginRight="32dp"
+    android:paddingLeft="32dp"
+    android:paddingRight="32dp"
+    android:paddingTop="32dp"
+    android:paddingBottom="32dp"
+    android:background="@color/white"
+    >
+
+    <TextView
+        android:id="@+id/add_expense_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Add New Expense"
+        android:textSize="20sp"
+        android:textColor="@color/black"
+        android:textStyle="bold"
+        android:fontFamily="@font/lexend_deca_regular"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        />
+
+    <EditText
+        android:id="@+id/editTextExpenseName"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:hint="Enter expense name"
+        android:textColorHint="@color/grey"
+        android:layout_marginTop="16dp"
+        android:paddingTop="12dp"
+        android:paddingBottom="12dp"
+        android:paddingLeft="8dp"
+        android:paddingRight="8dp"
+        android:fontFamily="@font/lexend_deca_regular"
+        android:background="@drawable/edit_text_bg"
+        android:textColor="@color/black"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/add_expense_title"
+        />
+
+    <EditText
+        android:id="@+id/editTextExpenseAmount"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:hint="Enter expense amount"
+        android:inputType="numberDecimal"
+        android:textColorHint="@color/grey"
+        android:layout_marginTop="16dp"
+        android:paddingTop="12dp"
+        android:paddingBottom="12dp"
+        android:paddingRight="8dp"
+        android:textColor="@color/black"
+        android:paddingLeft="8dp"
+        android:fontFamily="@font/lexend_deca_regular"
+        android:background="@drawable/edit_text_bg"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/editTextExpenseName"
+        />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/spinnerCategory"
+        style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.ExposedDropdownMenu"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/editTextExpenseAmount"
+        android:layout_marginTop="16dp"
+        android:hint="Select Category"
+        app:cursorColor="@color/grey"
+        app:hintTextColor="@color/grey"
+        app:boxStrokeWidthFocused="0dp"
+        >
+
+        <AutoCompleteTextView
+            android:id="@+id/category_dropdown"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="text"
+            android:textColor="@color/black"
+            android:popupBackground="@color/white"
+            android:textColorHint="@color/grey"
+            android:fontFamily="@font/lexend_deca_regular"
+            android:background="@drawable/edit_text_bg"
+            />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <EditText
+        android:id="@+id/editTextExpenseDate"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:hint="Select Date"
+        android:focusable="false"
+        android:clickable="true"
+        android:paddingTop="12dp"
+        android:paddingRight="8dp"
+        android:paddingBottom="12dp"
+        android:paddingLeft="8dp"
+        android:textColor="@color/black"
+        android:background="@drawable/edit_text_bg"
+        android:fontFamily="@font/lexend_deca_regular"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/spinnerCategory"
+        android:layout_marginTop="16dp"/>
+
+    <!-- Buttons -->
+    <Button
+        android:id="@+id/buttonCancel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Cancel"
+        android:textColor="@color/white"
+        android:backgroundTint="@color/blue"
+        android:fontFamily="@font/lexend_deca_regular"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/editTextExpenseDate"
+        android:layout_marginTop="16dp"/>
+
+    <Button
+        android:id="@+id/buttonAdd"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Add"
+        android:textStyle="bold"
+        android:fontFamily="@font/lexend_deca_regular"
+        android:textColor="@color/white"
+        android:backgroundTint="@color/blue"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/editTextExpenseDate"
+        android:layout_marginTop="16dp"/>
+</androidx.constraintlayout.widget.ConstraintLayout>
