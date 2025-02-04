@@ -22,11 +22,11 @@ import com.google.android.material.navigation.NavigationView;
 import java.util.ArrayList;
 import java.util.Date;
 
-public class MainActivity extends AppCompatActivity implements View.OnClickListener, OnAddExpenseDialogListener, NavigationView.OnNavigationItemSelectedListener {
+public class MainActivity extends AppCompatActivity implements View.OnClickListener, OnAddExpenseDialogListener{
 
     ExpenseController expenseController;
     ExpenseAdapter adapter;
-    DrawerLayout drawerLayout;
+//    DrawerLayout drawerLayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,34 +50,34 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         findViewById(R.id.add_expense_btn).setOnClickListener(this);
 
-        Toolbar toolbar = findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
+//        Toolbar toolbar = findViewById(R.id.toolbar);
+//        setSupportActionBar(toolbar);
 
-        drawerLayout = findViewById(R.id.drawer_layout);
-        NavigationView navigationView = findViewById(R.id.nav_view);
-        navigationView.setNavigationItemSelectedListener(this);
-        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawerLayout, toolbar, R.string.app_name,
-                R.string.app_name);
-        drawerLayout.addDrawerListener(toggle);
-        toggle.syncState();
+//        drawerLayout = findViewById(R.id.drawer_layout);
+//        NavigationView navigationView = findViewById(R.id.nav_view);
+//        navigationView.setNavigationItemSelectedListener(this);
+//        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawerLayout, toolbar, R.string.app_name,
+//                R.string.app_name);
+//        drawerLayout.addDrawerListener(toggle);
+//        toggle.syncState();
 
-        findViewById(R.id.hamburger).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                drawerLayout.open();
-            }
-        });
+//        findViewById(R.id.hamburger).setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                drawerLayout.open();
+//            }
+//        });
 
-        getOnBackPressedDispatcher().addCallback(new OnBackPressedCallback(true) {
-            @Override
-            public void handleOnBackPressed() {
-                if (drawerLayout.isOpen()) {
-                    drawerLayout.close();
-                } else {
-                    finish();
-                }
-            }
-        });
+//        getOnBackPressedDispatcher().addCallback(new OnBackPressedCallback(true) {
+//            @Override
+//            public void handleOnBackPressed() {
+//                if (drawerLayout.isOpen()) {
+//                    drawerLayout.close();
+//                } else {
+//                    finish();
+//                }
+//            }
+//        });
     }
 
     @Override
@@ -98,11 +98,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         expenseController.addCategory(category);
     }
 
-    @Override
-    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-        if (item.getItemId() == R.id.add_category_menu_item) {
-            AddExpenseDialog dialog = new AddExpenseDialog(this, expenseController, this, true);
-        }
-        return false;
-    }
+//    @Override
+//    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+//        if (item.getItemId() == R.id.add_category_menu_item) {
+//            AddExpenseDialog dialog = new AddExpenseDialog(this, expenseController, this, true);
+//        }
+//        return false;
+//    }
 }
