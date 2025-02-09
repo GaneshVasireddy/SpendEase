@@ -7,14 +7,19 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.devhive.spendease.db.Expense;
+
 import java.util.ArrayList;
+import java.util.List;
 
 public class ExpenseAdapter extends RecyclerView.Adapter<ExpenseViewHolder> {
 
-    ArrayList<ExpenseModel> expenseList ;
+    ArrayList<Expense> expenseList ;
+    ViewModel viewModel;
 
-    public ExpenseAdapter(ArrayList<ExpenseModel> expenseList) {
+    public ExpenseAdapter(ArrayList<Expense> expenseList, ViewModel viewModel) {
         this.expenseList = expenseList;
+        this.viewModel = viewModel;
     }
 
     @NonNull
@@ -27,11 +32,17 @@ public class ExpenseAdapter extends RecyclerView.Adapter<ExpenseViewHolder> {
 
     @Override
     public void onBindViewHolder(@NonNull ExpenseViewHolder viewHolder, int i) {
-        viewHolder.bind(expenseList.get(i));
+        viewHolder.bind(expenseList.get(i), viewModel);
     }
 
     @Override
     public int getItemCount() {
         return expenseList.size();
+    }
+
+    public void updateData(List<Expense> newExpenses) {
+        expenseList.clear();
+        expenseList.addAll(newExpenses);
+        notifyDataSetChanged();
     }
 }

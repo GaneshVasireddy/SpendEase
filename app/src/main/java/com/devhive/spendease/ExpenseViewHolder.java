@@ -6,6 +6,10 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.devhive.spendease.db.Expense;
+
+import java.util.Date;
+
 public class ExpenseViewHolder extends RecyclerView.ViewHolder {
 
     TextView expenseName;
@@ -21,10 +25,12 @@ public class ExpenseViewHolder extends RecyclerView.ViewHolder {
         expenseDate = itemView.findViewById(R.id.expense_date);
     }
 
-    public void bind(ExpenseModel expenseModel) {
-        expenseName.setText(expenseModel.getName());
-        categoryName.setText("Category: " + expenseModel.getCategory());
+    public void bind(Expense expenseModel, ViewModel viewModel) {
+        expenseName.setText(expenseModel.getTitle());
+        viewModel.getCategoryNameById(expenseModel.getCategoryId()).observeForever(category -> {
+            categoryName.setText("Category: " + category);
+        });
         expense.setText("Rs. " + expenseModel.getAmount() + " /-");
-        expenseDate.setText("Date: " + Utils.convertDateToString(expenseModel.getDate()));
+        expenseDate.setText("Date: " + Utils.convertDateToString(new Date(expenseModel.getDate())));
     }
 }
